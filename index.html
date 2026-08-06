@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday Fatma! 🎂</title>
+<title>Happy Birthday Sara! 🎂</title>
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Nunito:wght@400;600;700;900&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -327,9 +327,716 @@
     from { transform: scale(0) rotate(-15deg); opacity: 0; }
     to   { transform: scale(1) rotate(-5deg); opacity: 1; }
   }
+
+  /* ========================================= */
+  /* NEW ADVANCED FEATURES STYLES */
+  /* ========================================= */
+
+  /* Floating Music Player */
+  .music-player {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 10px 16px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 500;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+  }
+
+  .music-player:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(2px);
+  }
+
+  .music-btn {
+    background: linear-gradient(135deg, #ff6fd8, #f7c948);
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #1a0010;
+    font-size: 16px;
+    transition: transform 0.2s;
+    box-shadow: 0 4px 12px rgba(255, 111, 216, 0.3);
+  }
+
+  .music-btn:active {
+    transform: scale(0.9);
+  }
+
+  .music-info {
+    font-size: 12px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.9);
+    letter-spacing: 0.5px;
+  }
+
+  .visualizer {
+    display: flex;
+    align-items: flex-end;
+    gap: 3px;
+    height: 16px;
+  }
+
+  .vis-bar {
+    width: 3px;
+    height: 3px;
+    background: #ff6fd8;
+    border-radius: 1px;
+    animation: quiet 0.3s ease infinite alternate;
+  }
+
+  .music-player.playing .vis-bar {
+    animation: bounce-bar 0.8s ease infinite alternate;
+  }
+
+  .music-player.playing .vis-bar:nth-child(2) { animation-delay: 0.2s; animation-duration: 0.6s; }
+  .music-player.playing .vis-bar:nth-child(3) { animation-delay: 0.4s; animation-duration: 0.7s; }
+  .music-player.playing .vis-bar:nth-child(4) { animation-delay: 0.1s; animation-duration: 0.5s; }
+
+  @keyframes quiet {
+    from { height: 3px; }
+    to { height: 6px; }
+  }
+
+  @keyframes bounce-bar {
+    from { height: 4px; }
+    to { height: 16px; }
+  }
+
+  /* Interactive CSS Cake */
+  .cake-wrapper {
+    margin: 30px auto;
+    position: relative;
+    width: 250px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    cursor: pointer;
+  }
+
+  .cake-plate {
+    width: 270px;
+    height: 15px;
+    background: linear-gradient(to right, #e2e8f0, #cbd5e1);
+    border-radius: 50%;
+    position: absolute;
+    bottom: -5px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    z-index: 1;
+  }
+
+  .cake-layer {
+    position: absolute;
+    border-radius: 50% / 20px;
+    box-shadow: inset 0 -5px 10px rgba(0,0,0,0.3);
+  }
+
+  .cake-layer-bottom {
+    width: 220px;
+    height: 70px;
+    background: linear-gradient(180deg, #5c3a21 0%, #3d2514 100%);
+    bottom: 5px;
+    z-index: 2;
+  }
+
+  .cake-layer-middle {
+    width: 180px;
+    height: 65px;
+    background: linear-gradient(180deg, #ec4899 0%, #be185d 100%);
+    bottom: 40px;
+    z-index: 3;
+    box-shadow: inset 0 -5px 10px rgba(0,0,0,0.2), 0 5px 10px rgba(0,0,0,0.3);
+  }
+
+  .cake-layer-top {
+    width: 140px;
+    height: 60px;
+    background: linear-gradient(180deg, #fbcfe8 0%, #f472b6 100%);
+    bottom: 75px;
+    z-index: 4;
+    box-shadow: inset 0 -5px 8px rgba(0,0,0,0.1), 0 5px 8px rgba(0,0,0,0.2);
+  }
+
+  /* Cake drips / icing cream */
+  .cream-drip {
+    position: absolute;
+    width: 140px;
+    height: 20px;
+    background: #fff;
+    border-radius: 10px;
+    top: 65px;
+    z-index: 5;
+  }
+
+  .candles-container {
+    position: absolute;
+    width: 120px;
+    height: 100px;
+    bottom: 120px;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    z-index: 6;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .candle {
+    width: 8px;
+    height: 45px;
+    background: repeating-linear-gradient(45deg, #38bdf8, #38bdf8 5px, #fff 5px, #fff 10px);
+    position: relative;
+    border-radius: 3px 3px 0 0;
+    transition: filter 0.3s;
+  }
+
+  .candle:nth-child(2) {
+    background: repeating-linear-gradient(45deg, #f43f5e, #f43f5e 5px, #fff 5px, #fff 10px);
+    height: 55px;
+  }
+
+  .candle:nth-child(3) {
+    background: repeating-linear-gradient(45deg, #eab308, #eab308 5px, #fff 5px, #fff 10px);
+    height: 48px;
+  }
+
+  .wick {
+    position: absolute;
+    top: -5px;
+    left: 3px;
+    width: 2px;
+    height: 6px;
+    background: #475569;
+  }
+
+  .flame {
+    position: absolute;
+    top: -16px;
+    left: -2px;
+    width: 12px;
+    height: 18px;
+    background: radial-gradient(circle at center, #fef08a 20%, #f97316 60%, transparent 100%);
+    border-radius: 50% 50% 20% 20% / 60% 60% 40% 40%;
+    box-shadow: 0 0 10px #f97316, 0 0 20px #ea580c;
+    animation: flame-burn 1.5s infinite alternate;
+    cursor: pointer;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+
+  @keyframes flame-burn {
+    0% { transform: scale(1) rotate(-1deg); }
+    50% { transform: scale(1.05) rotate(1deg); }
+    100% { transform: scale(0.95) rotate(-0.5deg); }
+  }
+
+  .candle.extinguished .flame {
+    opacity: 0;
+    transform: scale(0.1);
+    pointer-events: none;
+  }
+
+  /* Smoke particle styling */
+  .smoke {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: smoke-rise 1.5s forwards ease-out;
+  }
+
+  @keyframes smoke-rise {
+    0% { transform: translateY(0) scale(1); opacity: 0.6; filter: blur(1px); }
+    100% { transform: translateY(-40px) scale(3); opacity: 0; filter: blur(3px); }
+  }
+
+  /* Cake blowout instruction and notification */
+  .wish-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(10, 10, 26, 0.85);
+    z-index: 400;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.8s ease;
+  }
+
+  .wish-overlay.show {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .wish-overlay-content {
+    background: rgba(255,255,255,0.06);
+    border: 1.5px solid rgba(255,255,255,0.12);
+    border-radius: 24px;
+    padding: 40px;
+    text-align: center;
+    backdrop-filter: blur(16px);
+    max-width: 500px;
+    width: 90%;
+    transform: scale(0.8);
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  }
+
+  .wish-overlay.show .wish-overlay-content {
+    transform: scale(1);
+  }
+
+  .wish-overlay h2 {
+    font-family: 'Pacifico', cursive;
+    color: #f7c948;
+    font-size: 36px;
+    margin-bottom: 12px;
+  }
+
+  .wish-overlay p {
+    color: white;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 24px;
+  }
+
+  .wish-btn-close {
+    background: linear-gradient(135deg, #ff6fd8, #f7c948);
+    border: none;
+    padding: 12px 36px;
+    border-radius: 30px;
+    color: #1a0010;
+    font-weight: 900;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: 0 4px 15px rgba(255, 111, 216, 0.4);
+    transition: transform 0.2s;
+  }
+
+  .wish-btn-close:hover {
+    transform: scale(1.05);
+  }
+
+  .cake-hint {
+    font-size: 14px;
+    color: #4fc8ff;
+    font-weight: 700;
+    margin-top: 8px;
+    animation: flash-hint 1.5s infinite alternate;
+  }
+
+  @keyframes flash-hint {
+    from { opacity: 0.5; }
+    to { opacity: 1; }
+  }
+
+  /* Memory Lane Polaroid Section */
+  .memory-lane {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    animation: fade-up 1s 1s both;
+  }
+
+  .section-title {
+    font-family: 'Pacifico', cursive;
+    font-size: clamp(32px, 8vw, 42px);
+    background: linear-gradient(135deg, #ff6fd8, #f7c948);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 30px;
+  }
+
+  .polaroid-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    padding: 10px;
+  }
+
+  .polaroid-card {
+    background: #fff;
+    padding: 16px 16px 24px 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    border-radius: 4px;
+    width: 180px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    transform: rotate(var(--rot));
+    position: relative;
+  }
+
+  .polaroid-card::after {
+    content: '';
+    position: absolute;
+    top: -12px;
+    left: 40px;
+    width: 100px;
+    height: 25px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(2px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transform: rotate(-3deg);
+  }
+
+  .polaroid-card:hover {
+    transform: scale(1.08) rotate(0deg) translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    z-index: 10;
+  }
+
+  .polaroid-img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    border: 1px solid #ddd;
+    background: #eee;
+  }
+
+  .polaroid-desc {
+    font-family: 'Pacifico', cursive;
+    font-size: 16px;
+    color: #334155;
+    text-align: center;
+    margin-top: 14px;
+  }
+
+  /* Trivia Section */
+  .trivia-section {
+    margin: 50px auto;
+    max-width: 560px;
+    animation: fade-up 1s 1.2s both;
+  }
+
+  .quiz-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1.5px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 32px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .quiz-progress {
+    height: 6px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    margin-bottom: 24px;
+    overflow: hidden;
+  }
+
+  .quiz-progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #ff6fd8, #f7c948);
+    border-radius: 3px;
+    transition: width 0.4s ease;
+  }
+
+  .quiz-question {
+    font-size: clamp(18px, 4.5vw, 22px);
+    color: white;
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.4;
+  }
+
+  .quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .quiz-opt-btn {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 14px;
+    padding: 16px 20px;
+    color: rgba(255, 255, 255, 0.9);
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s ease;
+  }
+
+  .quiz-opt-btn:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateX(4px);
+  }
+
+  .quiz-opt-btn.correct {
+    background: rgba(34, 197, 94, 0.2);
+    border-color: #22c55e;
+    color: #86efac;
+    box-shadow: 0 0 15px rgba(34, 197, 94, 0.2);
+  }
+
+  .quiz-opt-btn.incorrect {
+    background: rgba(239, 68, 68, 0.2);
+    border-color: #ef4444;
+    color: #fca5a5;
+  }
+
+  .quiz-fact {
+    margin-top: 16px;
+    padding: 12px 16px;
+    background: rgba(79, 200, 255, 0.1);
+    border-left: 4px solid #4fc8ff;
+    border-radius: 0 8px 8px 0;
+    color: #e0f2fe;
+    font-size: 14px;
+    line-height: 1.5;
+    animation: fade-in 0.3s forwards;
+  }
+
+  .quiz-next-btn {
+    margin-top: 20px;
+    background: linear-gradient(135deg, #4fc8ff, #ff6fd8);
+    border: none;
+    border-radius: 50px;
+    color: white;
+    font-weight: 900;
+    padding: 12px 30px;
+    cursor: pointer;
+    float: right;
+    box-shadow: 0 4px 15px rgba(79, 200, 255, 0.3);
+    transition: transform 0.2s;
+  }
+
+  .quiz-next-btn:hover {
+    transform: scale(1.04);
+  }
+
+  /* Score sheet/certificate layout */
+  .quiz-result {
+    text-align: center;
+    padding: 20px 0;
+  }
+
+  .quiz-trophy {
+    font-size: 64px;
+    margin-bottom: 16px;
+    animation: trophy-bounce 1s ease infinite alternate;
+  }
+
+  @keyframes trophy-bounce {
+    from { transform: translateY(0) scale(1); }
+    to { transform: translateY(-10px) scale(1.1); }
+  }
+
+  .quiz-score-num {
+    font-size: 40px;
+    font-weight: 900;
+    color: #f7c948;
+    margin: 12px 0;
+  }
+
+  .btn-quiz-restart {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: white;
+    font-weight: 700;
+    padding: 12px 30px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .btn-quiz-restart:hover {
+    background: rgba(255,255,255,0.2);
+    transform: translateY(-2px);
+  }
+
+  /* Wishes Wall Section */
+  .wishes-wall-section {
+    margin: 50px auto;
+    max-width: 560px;
+    animation: fade-up 1s 1.4s both;
+  }
+
+  .wishes-wall-section p {
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 20px;
+  }
+
+  .wish-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 30px;
+  }
+
+  #wish-input {
+    background: rgba(0,0,0,0.2);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 12px;
+    padding: 14px 16px;
+    color: white;
+    font-family: inherit;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  #wish-input:focus {
+    border-color: #ff6fd8;
+  }
+
+  .color-picker {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .color-picker-label {
+    font-size: 14px;
+    color: rgba(255,255,255,0.8);
+    font-weight: 600;
+  }
+
+  .color-dot {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+
+  .color-dot:hover {
+    transform: scale(1.15);
+  }
+
+  .color-dot.active {
+    border-color: white;
+    transform: scale(1.1);
+  }
+
+  .btn-post-wish {
+    background: linear-gradient(135deg, #f7c948, #ff6fd8);
+    border: none;
+    border-radius: 12px;
+    padding: 12px;
+    color: #1a0010;
+    font-weight: 900;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(247, 201, 72, 0.2);
+    transition: transform 0.2s;
+  }
+
+  .btn-post-wish:hover {
+    transform: scale(1.02);
+  }
+
+  .wishes-board {
+    position: relative;
+    min-height: 260px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1.5px dashed rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .sticky-note {
+    width: 140px;
+    min-height: 140px;
+    padding: 14px;
+    color: #1a1a2e;
+    font-family: 'Pacifico', cursive;
+    font-size: 14px;
+    line-height: 1.4;
+    border-radius: 4px;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
+    transform: rotate(var(--note-rot));
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: grab;
+    position: relative;
+    user-select: none;
+  }
+
+  .sticky-note:active {
+    cursor: grabbing;
+    transform: scale(1.05) rotate(0deg);
+    box-shadow: 10px 10px 25px rgba(0,0,0,0.4);
+    z-index: 100;
+  }
+
+  .sticky-note-delete {
+    position: absolute;
+    top: 4px; right: 4px;
+    width: 16px; height: 16px;
+    background: rgba(0,0,0,0.1);
+    color: rgba(0,0,0,0.5);
+    border-radius: 50%;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-family: sans-serif;
+  }
+
+  .sticky-note-delete:hover {
+    background: rgba(0,0,0,0.25);
+    color: rgba(0,0,0,0.85);
+  }
+
+  .hidden { display: none !important; }
 </style>
 </head>
 <body>
+
+<!-- Floating Music Player -->
+<div class="music-player" id="musicPlayer">
+  <button class="music-btn" onclick="toggleMusic()" id="musicBtn">▶</button>
+  <div class="music-info">Sara's Beat 🎵</div>
+  <div class="visualizer">
+    <div class="vis-bar"></div>
+    <div class="vis-bar"></div>
+    <div class="vis-bar"></div>
+    <div class="vis-bar"></div>
+  </div>
+</div>
+
+<!-- Make a Wish Overlay -->
+<div class="wish-overlay" id="wishOverlay">
+  <div class="wish-overlay-content">
+    <h2>Aapki Khwahish Kya Hai? 🌟</h2>
+    <p>Congratulations, Sara! You've blown out all the candles. Now close your eyes, make a beautiful wish, and let the universe do its magic! ✨❤️</p>
+    <button class="wish-btn-close" onclick="closeWishOverlay()">Khushiyan Shuru Karein! 🎉</button>
+  </div>
+</div>
 
 <div class="bg-gradient"></div>
 <div class="stars" id="stars"></div>
@@ -346,17 +1053,29 @@
     <span class="balloon" style="--sw:2.2s">🎈</span>
   </div>
 
-  <div class="birthday-label">✨ Happy Birthday Fatma ✨</div>
+  <div class="birthday-label">✨ Happy Birthday Sara ✨</div>
 
-  <div class="hero-name">Fatma!</div>
+  <div class="hero-name">Sara!</div>
 
-  <span class="big-cake">🎂</span>
+  <!-- Interactive CSS Cake -->
+  <div class="cake-wrapper" id="cakeWrapper" onclick="candleBlowEffect()">
+    <div class="cake-plate"></div>
+    <div class="cake-layer cake-layer-bottom"></div>
+    <div class="cake-layer cake-layer-middle"></div>
+    <div class="cake-layer cake-layer-top"></div>
+    <div class="candles-container">
+      <div class="candle" id="candle-1" onclick="extinguishCandle(event, 1)"><div class="wick"></div><div class="flame"></div></div>
+      <div class="candle" id="candle-2" onclick="extinguishCandle(event, 2)"><div class="wick"></div><div class="flame"></div></div>
+      <div class="candle" id="candle-3" onclick="extinguishCandle(event, 3)"><div class="wick"></div><div class="flame"></div></div>
+    </div>
+  </div>
+  <div class="cake-hint">Mombattiyan bujhane ke liye unpar click karein! 🕯️👇</div>
 
   <div class="age-badge">🥳 Aaj tera khaas din hai!</div>
 
   <div class="message-card">
     <p>
-      Dear <span>Fatma</span>, your smile is the most beautiful!<br><br>
+      Dear <span>Sara</span>, your smile is the most beautiful!<br><br>
       May every moment be filled with love, happiness, and hope for you.<br><br>
       I pray that Allah gives you <span>health, success, and always peace</span>.<br><br>
       May all your dreams come true, and may every day bring new progress —<br>
@@ -376,9 +1095,70 @@
     <div class="wish-card"><span class="emoji">🎯</span><div class="label">Har Sapna Pura</div></div>
   </div>
 
+  <!-- Memory Lane Polaroid Section -->
+  <section class="memory-lane">
+    <h2 class="section-title">🌸 Memory Lane</h2>
+    <div class="polaroid-wrapper">
+      <div class="polaroid-card" style="--rot: -3deg">
+        <img class="polaroid-img" src="images/birthday_cake.png" alt="Happy Birthday">
+        <div class="polaroid-desc">Dream Big ✨</div>
+      </div>
+      <div class="polaroid-card" style="--rot: 2deg">
+        <img class="polaroid-img" src="images/fairy_lights.png" alt="Cozy lights">
+        <div class="polaroid-desc">Keep Smiling 😊</div>
+      </div>
+      <div class="polaroid-card" style="--rot: -1deg">
+        <img class="polaroid-img" src="images/dreamy_sky.png" alt="Dreamy sky">
+        <div class="polaroid-desc">Make a Wish 🌟</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trivia Quiz Section -->
+  <section class="trivia-section">
+    <h2 class="section-title">🧠 Sara Trivia Quiz</h2>
+    <div class="quiz-card" id="quiz-card">
+      <div class="quiz-progress">
+        <div class="quiz-progress-bar" id="quiz-progress-bar"></div>
+      </div>
+      <div id="quiz-play-container">
+        <h3 class="quiz-question" id="quiz-question">Question loading...</h3>
+        <div class="quiz-options" id="quiz-options"></div>
+        <div id="quiz-fact" class="quiz-fact hidden"></div>
+        <button id="quiz-next-btn" class="quiz-next-btn hidden" onclick="nextQuestion()">Agla Sawal ➡</button>
+      </div>
+      <div id="quiz-result-container" class="quiz-result hidden">
+        <div class="quiz-trophy">🏆</div>
+        <h3 class="birthday-label" style="font-size: 20px;">Score Card</h3>
+        <div class="quiz-score-num" id="quiz-score-text">3/3</div>
+        <p style="color: white; font-weight: 600; margin-bottom: 20px;" id="quiz-eval-text">Aap Sara ke sache dost hain! ❤️</p>
+        <button class="btn-quiz-restart" onclick="restartQuiz()">Dobara Khelein 🔄</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Wishes Wall Section -->
+  <section class="wishes-wall-section">
+    <h2 class="section-title">✍️ Wishes Board</h2>
+    <div class="wish-form">
+      <input type="text" id="wish-input" placeholder="Sara ke liye ek pyari si wish likhein..." maxlength="100">
+      <div class="color-picker">
+        <span class="color-picker-label">Color:</span>
+        <span class="color-dot active" data-color="#fff3b0" style="background:#fff3b0"></span>
+        <span class="color-dot" data-color="#fec5bb" style="background:#fec5bb"></span>
+        <span class="color-dot" data-color="#d8e2dc" style="background:#d8e2dc"></span>
+        <span class="color-dot" data-color="#e8def8" style="background:#e8def8"></span>
+      </div>
+      <button class="btn-post-wish" onclick="postWish()">Board Par Lagayein 📌</button>
+    </div>
+    <div class="wishes-board" id="wishes-board">
+      <!-- Dynamic sticky notes loaded from localStorage -->
+    </div>
+  </section>
+
   <button class="btn-firework" onclick="launchFireworks()">🎆 Fireworks Chalao!</button>
 
-  <div class="footer-love">Made with ❤️ for Fatma · Share the smiles!</div>
+  <div class="footer-love">Made with ❤️ for Sara · Share the smiles!</div>
 </div>
 
 <div class="snap-sticker">📸 </div>
@@ -492,6 +1272,474 @@ function launchFireworks() {
 
 // Auto launch on load
 setTimeout(() => launchFireworks(), 1800);
+
+// =========================================
+// NEW ADVANCED FEATURES LOGIC
+// =========================================
+
+// 1. Audio Player Synthesis
+let audioCtx = null;
+let synthInterval = null;
+let isPlaying = false;
+let currentNoteIndex = 0;
+let synthTempo = 140; // BPM
+
+// Happy birthday melody mapping
+const melody = [
+  { f: 261.63, d: 0.5 }, { f: 261.63, d: 0.5 }, { f: 293.66, d: 1 }, { f: 261.63, d: 1 }, { f: 349.23, d: 1 }, { f: 329.63, d: 2 },
+  { f: 261.63, d: 0.5 }, { f: 261.63, d: 0.5 }, { f: 293.66, d: 1 }, { f: 261.63, d: 1 }, { f: 392.00, d: 1 }, { f: 349.23, d: 2 },
+  { f: 261.63, d: 0.5 }, { f: 261.63, d: 0.5 }, { f: 523.25, d: 1 }, { f: 440.00, d: 1 }, { f: 349.23, d: 1 }, { f: 329.63, d: 1 }, { f: 293.66, d: 2 },
+  { f: 466.16, d: 0.5 }, { f: 466.16, d: 0.5 }, { f: 440.00, d: 1 }, { f: 349.23, d: 1 }, { f: 392.00, d: 1 }, { f: 349.23, d: 2 }
+];
+
+function initAudioContext() {
+  if (!audioCtx) {
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  }
+}
+
+function playNote(freq, duration) {
+  if (!audioCtx) return;
+  
+  const osc = audioCtx.createOscillator();
+  const gainNode = audioCtx.createGain();
+  
+  // Reverb-like feedback loop
+  const delay = audioCtx.createDelay(1.0);
+  const feedback = audioCtx.createGain();
+  
+  osc.type = 'triangle';
+  osc.frequency.value = freq;
+  
+  gainNode.gain.setValueAtTime(0, audioCtx.currentTime);
+  gainNode.gain.linearRampToValueAtTime(0.2, audioCtx.currentTime + 0.05);
+  gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+  
+  delay.delayTime.value = 0.25;
+  feedback.gain.value = 0.35;
+  
+  osc.connect(gainNode);
+  gainNode.connect(audioCtx.destination);
+  
+  gainNode.connect(delay);
+  delay.connect(feedback);
+  feedback.connect(delay);
+  feedback.connect(audioCtx.destination);
+  
+  osc.start();
+  osc.stop(audioCtx.currentTime + duration);
+}
+
+function playMelodyLoop() {
+  if (!isPlaying) return;
+  const note = melody[currentNoteIndex];
+  const durationSec = note.d * (60 / synthTempo);
+  
+  if (note.f > 0) {
+    playNote(note.f, durationSec);
+  }
+  
+  currentNoteIndex = (currentNoteIndex + 1) % melody.length;
+  synthInterval = setTimeout(playMelodyLoop, durationSec * 1000);
+}
+
+function toggleMusic() {
+  initAudioContext();
+  const playerEl = document.getElementById('musicPlayer');
+  const btnEl = document.getElementById('musicBtn');
+  
+  if (isPlaying) {
+    isPlaying = false;
+    clearTimeout(synthInterval);
+    playerEl.classList.remove('playing');
+    btnEl.innerText = '▶';
+  } else {
+    if (audioCtx.state === 'suspended') {
+      audioCtx.resume();
+    }
+    isPlaying = true;
+    playerEl.classList.add('playing');
+    btnEl.innerText = '⏸';
+    playMelodyLoop();
+  }
+}
+
+function startMusicAutomatically() {
+  if (!isPlaying) {
+    toggleMusic();
+  }
+}
+
+// 2. Candle Blowing System
+let blownCandles = 0;
+const totalCandles = 3;
+
+function extinguishCandle(event, id) {
+  event.stopPropagation();
+  
+  const candle = document.getElementById(`candle-${id}`);
+  if (candle.classList.contains('extinguished')) return;
+  
+  candle.classList.add('extinguished');
+  blownCandles++;
+  
+  initAudioContext();
+  playPuffSound();
+  
+  const candleRect = candle.getBoundingClientRect();
+  const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  const x = candleRect.left + scrollLeft + candleRect.width / 2;
+  const y = candleRect.top + scrollTop;
+  createSmokeEffect(x, y);
+  
+  if (blownCandles === totalCandles) {
+    setTimeout(() => {
+      document.getElementById('wishOverlay').classList.add('show');
+      launchFireworks();
+      startMusicAutomatically();
+    }, 800);
+  }
+}
+
+function playPuffSound() {
+  if (!audioCtx) return;
+  const bufferSize = audioCtx.sampleRate * 0.1;
+  const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+  const data = buffer.getChannelData(0);
+  for (let i = 0; i < bufferSize; i++) {
+    data[i] = Math.random() * 2 - 1;
+  }
+  const noise = audioCtx.createBufferSource();
+  noise.buffer = buffer;
+  
+  const filter = audioCtx.createBiquadFilter();
+  filter.type = 'bandpass';
+  filter.frequency.value = 1000;
+  
+  const gain = audioCtx.createGain();
+  gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+  gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.1);
+  
+  noise.connect(filter);
+  filter.connect(gain);
+  gain.connect(audioCtx.destination);
+  
+  noise.start();
+}
+
+function createSmokeEffect(x, y) {
+  for (let i = 0; i < 5; i++) {
+    const s = document.createElement('div');
+    s.className = 'smoke';
+    const sz = Math.random() * 8 + 4;
+    s.style.width = `${sz}px`;
+    s.style.height = `${sz}px`;
+    s.style.left = `${x + (Math.random() * 10 - 5)}px`;
+    s.style.top = `${y - 10}px`;
+    s.style.animationDelay = `${i * 0.1}s`;
+    document.body.appendChild(s);
+    setTimeout(() => s.remove(), 1500);
+  }
+}
+
+function closeWishOverlay() {
+  document.getElementById('wishOverlay').classList.remove('show');
+}
+
+function candleBlowEffect() {
+  for (let i = 1; i <= totalCandles; i++) {
+    const candle = document.getElementById(`candle-${i}`);
+    if (!candle.classList.contains('extinguished')) {
+      const mockEvent = { stopPropagation: () => {} };
+      extinguishCandle(mockEvent, i);
+    }
+  }
+}
+
+// 3. Trivia Quiz
+const quizQuestions = [
+  {
+    question: "Sara ka sabse bada superpower kya hai? 🦸‍♀️",
+    options: [
+      "Har mushkil mein smile karna! 😊",
+      "Infinite baten karne ki capacity! 🗣️",
+      "Logo ka mood theek kar dena! 💖",
+      "Super speed se ready hona! ⚡"
+    ],
+    answer: 2,
+    funFact: "Bilkul! Sara ki presence hi positive vibes le aati hai."
+  },
+  {
+    question: "Sara ko khush karne ka sabse asaan tareeqa? 🎁",
+    options: [
+      "Garmi mein thandi Chai! ☕",
+      "Aesthetic photos kheench dena! 📸",
+      "Chocolates aur sweet surprises! 🍫",
+      "Ek lambi, gehri guftagu! 💬"
+    ],
+    answer: 1,
+    funFact: "Sahi baat hai! Aesthetic vibes aur achhi lighting is the key!"
+  },
+  {
+    question: "Sara ki personality kaisi hai? 🌟",
+    options: [
+      "Shy and quiet 🤫",
+      "Super dramatic and loud 🎭",
+      "Caring, creative and unique ✨",
+      "Hamesha soyee hui 😴"
+    ],
+    answer: 2,
+    funFact: "Exactly! She is extremely caring, creative and unique."
+  }
+];
+
+let currentQuestionIndex = 0;
+let quizScore = 0;
+let hasAnswered = false;
+
+function loadQuestion() {
+  hasAnswered = false;
+  const q = quizQuestions[currentQuestionIndex];
+  
+  const progPercent = (currentQuestionIndex / quizQuestions.length) * 100;
+  document.getElementById('quiz-progress-bar').style.width = `${progPercent}%`;
+  
+  document.getElementById('quiz-question').innerText = q.question;
+  
+  const optContainer = document.getElementById('quiz-options');
+  optContainer.innerHTML = '';
+  
+  q.options.forEach((opt, idx) => {
+    const btn = document.createElement('button');
+    btn.className = 'quiz-opt-btn';
+    btn.innerText = opt;
+    btn.onclick = () => selectOption(idx);
+    optContainer.appendChild(btn);
+  });
+  
+  document.getElementById('quiz-next-btn').classList.add('hidden');
+  document.getElementById('quiz-fact').classList.add('hidden');
+}
+
+function selectOption(selectedIdx) {
+  if (hasAnswered) return;
+  hasAnswered = true;
+  
+  const q = quizQuestions[currentQuestionIndex];
+  const optButtons = document.getElementById('quiz-options').children;
+  
+  if (selectedIdx === q.answer) {
+    optButtons[selectedIdx].classList.add('correct');
+    quizScore++;
+  } else {
+    optButtons[selectedIdx].classList.add('incorrect');
+    optButtons[q.answer].classList.add('correct');
+  }
+  
+  const factEl = document.getElementById('quiz-fact');
+  factEl.innerText = q.funFact;
+  factEl.classList.remove('hidden');
+  
+  for (let btn of optButtons) {
+    btn.disabled = true;
+  }
+  
+  document.getElementById('quiz-next-btn').classList.remove('hidden');
+}
+
+function nextQuestion() {
+  currentQuestionIndex++;
+  if (currentQuestionIndex < quizQuestions.length) {
+    loadQuestion();
+  } else {
+    showQuizResults();
+  }
+}
+
+function showQuizResults() {
+  document.getElementById('quiz-progress-bar').style.width = `100%`;
+  document.getElementById('quiz-play-container').classList.add('hidden');
+  
+  const resultEl = document.getElementById('quiz-result-container');
+  resultEl.classList.remove('hidden');
+  
+  document.getElementById('quiz-score-text').innerText = `${quizScore} / ${quizQuestions.length}`;
+  
+  let evaluation = '';
+  if (quizScore === quizQuestions.length) {
+    evaluation = 'Kamal hai! Aap Sara ke sabse sache aur gehre dost hain! 💖🏆';
+  } else if (quizScore >= 1) {
+    evaluation = 'Achha score hai! Aap Sara ko kafi achhe se jante hain. 😊✨';
+  } else {
+    evaluation = 'Chalein koi baat nahi! Sara ko aur kareeb se janne ka ek bahana mil gaya. 😉';
+  }
+  document.getElementById('quiz-eval-text').innerText = evaluation;
+  
+  for (let i = 0; i < 30; i++) {
+    setTimeout(() => launchConfettiBurst(), i * 100);
+  }
+}
+
+function launchConfettiBurst() {
+  const colors = ['#ff6fd8','#f7c948','#4fc8ff','#ff5a5a','#6fff6a','#b16aff'];
+  const wrap = document.getElementById('confetti');
+  const c = document.createElement('div');
+  c.className = 'conf';
+  c.style.cssText = `
+    left:${Math.random()*100}%;
+    background:${colors[Math.floor(Math.random()*colors.length)]};
+    --fd:${(Math.random()*3+2).toFixed(1)}s;
+    --fde:0s;
+    width:${Math.random()<0.5?8:12}px;
+    height:${Math.random()<0.5?10:18}px;
+    border-radius:${Math.random()<0.3?'50%':'3px'};
+  `;
+  wrap.appendChild(c);
+  setTimeout(() => c.remove(), 4000);
+}
+
+function restartQuiz() {
+  currentQuestionIndex = 0;
+  quizScore = 0;
+  document.getElementById('quiz-play-container').classList.remove('hidden');
+  document.getElementById('quiz-result-container').classList.add('hidden');
+  loadQuestion();
+}
+
+// 4. Wishes Wall
+let selectedColor = '#fff3b0';
+
+// Setup color dot picker events
+function initColorPicker() {
+  document.querySelectorAll('.color-dot').forEach(dot => {
+    dot.addEventListener('click', (e) => {
+      document.querySelectorAll('.color-dot').forEach(d => d.classList.remove('active'));
+      e.target.classList.add('active');
+      selectedColor = e.target.getAttribute('data-color');
+    });
+  });
+}
+
+function loadWishes() {
+  const board = document.getElementById('wishes-board');
+  board.innerHTML = '';
+  
+  let wishes = JSON.parse(localStorage.getItem('sara_birthday_wishes')) || [];
+  
+  if (wishes.length === 0) {
+    wishes = [
+      { text: "Happy Birthday Sara! Hamesha khush raho 🎂", color: "#fff3b0", rot: "-2deg", id: 1 },
+      { text: "Have a blast, Sara! Best year ever! 🎉🌟", color: "#fec5bb", rot: "3deg", id: 2 }
+    ];
+    localStorage.setItem('sara_birthday_wishes', JSON.stringify(wishes));
+  }
+  
+  wishes.forEach(w => {
+    const note = document.createElement('div');
+    note.className = 'sticky-note';
+    note.style.background = w.color;
+    note.style.setProperty('--note-rot', w.rot);
+    note.innerHTML = `
+      <span class="sticky-note-delete" onclick="deleteWish(event, ${w.id})">❌</span>
+      <div>${w.text}</div>
+    `;
+    setupDragEvent(note);
+    board.appendChild(note);
+  });
+}
+
+function postWish() {
+  const input = document.getElementById('wish-input');
+  const text = input.value.trim();
+  if (!text) return;
+  
+  const wishes = JSON.parse(localStorage.getItem('sara_birthday_wishes')) || [];
+  const rotVal = (Math.random() * 8 - 4).toFixed(1) + 'deg';
+  const newWish = {
+    text: text,
+    color: selectedColor,
+    rot: rotVal,
+    id: Date.now()
+  };
+  
+  wishes.push(newWish);
+  localStorage.setItem('sara_birthday_wishes', JSON.stringify(wishes));
+  
+  input.value = '';
+  loadWishes();
+  launchConfettiBurst();
+}
+
+function deleteWish(event, id) {
+  event.stopPropagation();
+  let wishes = JSON.parse(localStorage.getItem('sara_birthday_wishes')) || [];
+  wishes = wishes.filter(w => w.id !== id);
+  localStorage.setItem('sara_birthday_wishes', JSON.stringify(wishes));
+  loadWishes();
+}
+
+function setupDragEvent(el) {
+  let offsetX = 0, offsetY = 0;
+  
+  el.addEventListener('mousedown', dragStart);
+  el.addEventListener('touchstart', dragStart, { passive: true });
+  
+  function dragStart(e) {
+    const touch = e.type === 'touchstart';
+    const clientX = touch ? e.touches[0].clientX : e.clientX;
+    const clientY = touch ? e.touches[0].clientY : e.clientY;
+    
+    const rect = el.getBoundingClientRect();
+    offsetX = clientX - rect.left;
+    offsetY = clientY - rect.top;
+    
+    el.style.position = 'absolute';
+    el.style.zIndex = 1000;
+    
+    if (touch) {
+      document.addEventListener('touchmove', dragMove, { passive: false });
+      document.addEventListener('touchend', dragEnd);
+    } else {
+      document.addEventListener('mousemove', dragMove);
+      document.addEventListener('mouseup', dragEnd);
+    }
+  }
+  
+  function dragMove(e) {
+    if (e.type === 'touchmove') e.preventDefault();
+    
+    const touch = e.type === 'touchmove';
+    const clientX = touch ? e.touches[0].clientX : e.clientX;
+    const clientY = touch ? e.touches[0].clientY : e.clientY;
+    
+    const board = document.getElementById('wishes-board');
+    const boardRect = board.getBoundingClientRect();
+    
+    let left = clientX - boardRect.left - offsetX;
+    let top = clientY - boardRect.top - offsetY;
+    
+    el.style.left = `${left}px`;
+    el.style.top = `${top}px`;
+  }
+  
+  function dragEnd(e) {
+    if (e.type === 'touchend') {
+      document.removeEventListener('touchmove', dragMove);
+      document.removeEventListener('touchend', dragEnd);
+    } else {
+      document.removeEventListener('mousemove', dragMove);
+      document.removeEventListener('mouseup', dragEnd);
+    }
+  }
+}
+
+// Initializations
+window.addEventListener('DOMContentLoaded', () => {
+  loadQuestion();
+  initColorPicker();
+  loadWishes();
+});
 </script>
 </body>
 </html>
